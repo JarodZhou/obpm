@@ -24,6 +24,18 @@ module.exports = {
                 test: /\.scss$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
                 include: APP_PATH
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?limit=40000'
+            },
+            {
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                include: APP_PATH,
+                query: {
+                    presets: ['es2015']
+                }
             }
         ]
     },
