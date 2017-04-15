@@ -7,15 +7,18 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 var webpack = require('webpack');
 
+var TEM_PATH = path.resolve(ROOT_PATH, 'templates');
+
 module.exports = {
     entry: {
         app: path.resolve(APP_PATH, 'index.js'),
+        mobile: path.resolve(APP_PATH, 'mobile.js'),
         vendors: ['jquery','moment']
     }, 
 
     output: {
         path: BUILD_PATH,
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     devServer: {
         historyApiFallback: true,
@@ -67,7 +70,18 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename:'vendors.js' }),
 
         new HtmlwebpackPlugin({
-            title: 'Hello World app'
+            title: 'Hello World app',
+            template: path.resolve(TEM_PATH, 'index.ejs'),
+            filename: 'index.html',
+            chunks: ['app','vendors'],
+            inject: 'body'
+        }),
+        new HtmlwebpackPlugin({
+            title: 'Hello Mobile app!!!',
+            template: path.resolve(TEM_PATH, 'mobile.ejs'),
+            filename: 'mobile.html',
+            chunks: ['mobile','vendors'],
+            inject: 'body'
         })
     ]
 };
