@@ -19,8 +19,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         hot: true,
-        inline: true,
-        progress: true
+        inline: true
     },
 
     resolve: {
@@ -33,10 +32,7 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 include: APP_PATH,
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                exclude: /node_modules/
             },
             {
                 test: /\.scss$/,
