@@ -38,3 +38,4 @@ ReactDOM.render(<MessageList1 />, messageList1);
 const messageList2 = document.createElement('div');
 document.body.appendChild(messageList2);
 ReactDOM.render(<MessageList2 />, messageList2);
+
